@@ -1,75 +1,29 @@
-import Link from "next/link";
-import { BiHomeCircle, BiUserCircle } from "react-icons/bi";
-import { BsBell, BsBookmark, BsThreeDots, BsTwitter } from "react-icons/bs";
-import { HiOutlineHashtag } from "react-icons/hi";
-import { HiOutlineEnvelope } from "react-icons/hi2";
-
-const NAVIGATION_ITEMS = [
-  {
-    title: "",
-    icon: BsTwitter,
-  },
-  {
-    title: "Home",
-    icon: BiHomeCircle,
-  },
-  {
-    title: "Explore",
-    icon: HiOutlineHashtag,
-  },
-  {
-    title: "Notifications",
-    icon: BsBell,
-  },
-  {
-    title: "Messages",
-    icon: HiOutlineEnvelope,
-  },
-  {
-    title: "Bookmarks",
-    icon: BsBookmark,
-  },
-  {
-    title: "Profile",
-    icon: BiUserCircle,
-  },
-];
+import LeftSideBar from "./components/LeftSideBar";
 
 export default function Home() {
   return (
     <div className="w-full h-full flex justify-center items-center bg-black">
       <div className="max-w-screen-xl w-full h-full flex relative">
-        <section className="fixed w-[275px] flex flex-col items-stretch h-screen">
-          <div className="w-full flex flex-col items-stretch h-full space-y-4 mt-4">
-            {NAVIGATION_ITEMS.map((item) => (
-              <Link
-                className=" hover:bg-white/10 transition duration-200 text-2xl flex items-center justify-start w-fit space-x-4 rounded-3xl py-2 px-6"
-                key={item.title}
-                href={`/${item.title.toLocaleLowerCase()}`}
-              >
-                <item.icon />
-                {item.title && <div>{item.title}</div>}
-              </Link>
-            ))}
-            <button className="rounded-full m-4 bg-primary p-4 text-2xl text-center hover:bg-opacity-70 transition duration-200">
-              Tweet
-            </button>
-          </div>
-          <button className="rounded-full m-4 flex items-center space-x-2 bg-transparent p-4 text-center hover:bg-white/10 transition duration-200 w-full justify-between">
-            <div className=" flex items-center space-x-2">
-              <div className="rounded-full bg-slate-400 w-12 h-12"></div>
-              <div className="text-left text-sm">
-                <div className="font-semibold">Club Of Coders</div>
-                <div>@Sashi</div>
+        <LeftSideBar />
+        <main className="ml-[275px] p-5 flex w-[600px] h-full min-h-screen flex-col border-l-[0.5px] border-r-[0.5px] border-gray-600">
+          <h1 className="text-xl font-bold">Home</h1>
+          <div className="border-t-[0.5px] border-b-[0.5px] border-gray-600 h-32 relative">
+            <div className="w-10 h-10 bg-slate-400 rounded-full"></div>
+            <div className="flex flex-col">
+              <div className="border-b-[0.5px]">
+                <input type="text" placeholder="What's happening.. " />
+              </div>
+              <div className="w-full justify-between items-center flex"></div>
+              <div></div>
+              <div>
+                <button className="rounded-full m-4 bg-primary p-4 text-2xl text-center hover:bg-opacity-70 transition duration-200">
+                  Tweet
+                </button>
               </div>
             </div>
-            <div>
-              <BsThreeDots />
-            </div>
-          </button>
-        </section>
-        {/* <main>main</main>
-        <section>right sidebar</section> */}
+          </div>
+        </main>
+        {/* <section>right sidebar</section> */}
       </div>
     </div>
   );
